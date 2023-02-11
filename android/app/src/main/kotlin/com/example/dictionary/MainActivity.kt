@@ -1,4 +1,4 @@
-package com.example.dictionary
+package com.uzbest.dictionary
 
 import io.flutter.embedding.android.FlutterActivity
 
