@@ -31,8 +31,8 @@ class _SplashScreenState extends State<SplashScreen> {
             alignment: Alignment.center,
             child: Icon(
               Icons.menu_book,
-              size: 50,
-              color: Colors.pink,
+              size: 150,
+              color: Colors.white,
             ),
           ),
           Align(
@@ -43,7 +43,7 @@ class _SplashScreenState extends State<SplashScreen> {
                   width: 40,
                   height: 40,
                   child: CircularProgressIndicator.adaptive(
-                    backgroundColor: Colors.pink,
+                    backgroundColor: Colors.tealAccent,
                   ),
                 ),
               ))

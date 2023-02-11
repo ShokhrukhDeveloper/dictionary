@@ -19,11 +19,13 @@ class _WordDescriptonScreenState extends State<WordDescriptonScreen> {
 
   Future<void> translate() async {
     for (int i = 0; i < words.length; i++) {
+      if(wordsUz[i]!=null)return;
       var res = await tr.translate(words[i].definition!, from: "en", to: 'uz');
       wordsUz[i] = res.text;
       setState(() {});
-      uzbek = true;
+
     }
+
   }
 
   bool uzbek = false;
@@ -45,6 +47,7 @@ class _WordDescriptonScreenState extends State<WordDescriptonScreen> {
             TextButton(
                 onPressed: () {
                   translate();
+                  uzbek = !uzbek;
                 },
                 child: Icon(
                   Icons.translate,

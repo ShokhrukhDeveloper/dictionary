@@ -20,8 +20,11 @@ class DrawerWidget extends StatelessWidget {
               children: [
                 Text('Dictionary off line'),
                 Align(
-                  alignment: Alignment.center,
-                  child: FlutterLogo(size: 100),
+                  alignment: Alignment.centerRight,
+                  child: CircleAvatar(
+                    backgroundImage: AssetImage("assets/image.jpg"),
+                    radius: 50,
+                  ),
                 )
               ],
             ),
