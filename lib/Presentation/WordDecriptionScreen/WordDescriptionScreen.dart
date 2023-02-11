@@ -18,16 +18,38 @@ class _WordDescriptonScreenState extends State<WordDescriptonScreen> {
   }
 
   Future<void> translate() async {
-    for (int i = 0; i < words.length; i++) {
-      if(wordsUz[i]!=null)return;
-      var res = await tr.translate(words[i].definition!, from: "en", to: 'uz');
-      wordsUz[i] = res.text;
-      setState(() {});
+    try{
+      for (int i = 0; i < words.length; i++) {
+        if(wordsUz[i]!=null){
+          setState(() {});
+          return;
+        }
+
+        var res = await tr.translate(words[i].definition!, from: "en", to: 'uz');
+        wordsUz[i] = res.text;
+        setState(() {});
+      }
+      }catch(e){
 
     }
-
   }
-
+  progress(){
+    showDialog(context: context, builder: (_)=>Scaffold(
+      backgroundColor: Colors.transparent,
+      body: Center(
+        child: Column(
+          mainAxisSize: MainAxisSize.min,
+          children: const [
+            SizedBox(
+              height: 50,
+              width: 50,
+              child: CircularProgressIndicator(),),
+            Text("Translating...")
+          ],
+        ),
+      ),
+    ));
+  }
   bool uzbek = false;
   static var tr = GoogleTranslator();
   List<Word> words = [];
@@ -49,8 +71,8 @@ class _WordDescriptonScreenState extends State<WordDescriptonScreen> {
                   translate();
                   uzbek = !uzbek;
                 },
-                child: Icon(
-                  Icons.translate,
+                child: const Icon(
+                  Icons.change_circle_outlined,
                   color: Colors.white,
                 ))
           ],
